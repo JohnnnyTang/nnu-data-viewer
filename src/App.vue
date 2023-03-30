@@ -1,26 +1,36 @@
+<!--
+ * @FileDescription: App入口，NNU学校数据大屏展示
+ * @Author: 作者信息
+ * @Date: 文件创建时间
+ * @LastEditors: 最后更新作者
+ * @LastEditTime: 最后更新时间
+ -->
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <TabControl />
+  <StatHeader />
+  <TabsContainer />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import StatHeader from './components/StatHeader.vue'
+import TabControl from './components/TabControl.vue'
+import TabsContainer from './components/TabsContainer.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    StatHeader, 
+    TabControl, 
+    TabsContainer
   }
 }
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+html, body, #app {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
 }
 </style>
