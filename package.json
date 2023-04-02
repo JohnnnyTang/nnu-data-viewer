@@ -10,6 +10,10 @@
   "dependencies": {
     "@kjgl77/datav-vue3": "^1.4.2",
     "core-js": "^3.8.3",
+    "deck.gl": "^8.9.6",
+    "echarts": "^5.4.2",
+    "mapbox-gl": "^2.13.0",
+    "typescript": "^5.0.3",
     "vue": "^3.2.13"
   },
   "devDependencies": {

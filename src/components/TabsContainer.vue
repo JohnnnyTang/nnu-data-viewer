@@ -6,25 +6,23 @@
  * @LastEditTime: 最后更新时间
  -->
 <template>
-  <div class="tabs-container">
-    
-  </div>
+  <dv-border-box10 class="tabs-container">
+    <StudentTab />
+  </dv-border-box10>
 </template>
 
-<script>
-export default {
-  name: 'TabsContainer',
-}
-</script>
-
 <script setup>
+import StudentTab from './tabPages/StudentTab.vue';
+import { BorderBox10 as DvBorderBox10 } from '@kjgl77/datav-vue3';
 
 </script>
 
 <style scoped lang="scss">
 div.tabs-container {
+  position: absolute;
+  top: 16vh;
   height: 84vh;
   width: 100vw;
-  background-color: rgb(227, 250, 215);
+  background-color: transparent;
 }
 </style>

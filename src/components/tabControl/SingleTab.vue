@@ -6,13 +6,13 @@
  * @LastEditTime: 最后更新时间
  -->
 <template>
-  <div class="single-tab">
+  <div class="single-tab" :class="{active: ifActive}">
     <div href="#">
       <span></span>
       <span></span>
       <span></span>
       <span></span>
-      联合办学学校
+      {{ tabName }}
     </div>
   </div>
 </template>
@@ -24,6 +24,12 @@ export default {
 </script>
 
 <script setup>
+import { defineProps } from 'vue'
+
+defineProps({
+    tabName: String, 
+    ifActive: Boolean
+})
 
 </script>
 
@@ -31,22 +37,23 @@ export default {
 div.single-tab {
     height: 100%;
     width: fit-content;
-    &:hover {
+    &:hover, &.active {
         background: #3191dfef;
         color: #fff;
         border-radius: 2px;
-        box-shadow: 0 0 2px rgba(48, 144, 223, 0.937),
-                    0 0 10px rgba(48, 144, 223, 0.837),
-                    0 0 20px rgba(48, 144, 223, 0.637),
-                    0 0 40px rgba(48, 144, 223, 0.337);
+        box-shadow: 0 0 2px rgba(48, 173, 223, 0.937),
+                    0 0 10px rgba(48, 173, 223, 0.837),
+                    0 0 20px rgba(48, 173, 223, 0.637),
+                    0 0 40px rgba(48, 173, 223, 0.337);
         cursor: pointer;
     }
+    transition: all 0.5s ease-in-out ;
     div {
         position: relative;
         display: inline-block;
         height: 100%;
         padding: 0px 0.5vw;
-        color: #eefeff;
+        color: #f8ffff;
         font-size: 0.8vw;
         font-weight: 600;
         text-decoration: none;
@@ -56,8 +63,6 @@ div.single-tab {
         transition: .5s;
         margin-top: 0px;
         letter-spacing: 4px;
-
-        
 
         span {
             position: absolute;

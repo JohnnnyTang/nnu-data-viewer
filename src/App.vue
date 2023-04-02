@@ -6,8 +6,10 @@
  * @LastEditTime: 最后更新时间
  -->
 <template>
-  <TabControl />
-  <StatHeader />
+  <div class="app-header">
+    <TabControl />
+    <StatHeader />
+  </div>
   <TabsContainer />
 </template>
 
@@ -32,5 +34,28 @@ html, body, #app {
   width: 100%;
   padding: 0;
   margin: 0;
+  background-image: linear-gradient(
+        to bottom,
+        rgba(0, 24, 68, 1) 0%,
+        rgba(24, 47, 90, 0.8) 36%,
+        rgba(0, 24, 68, 0.9) 100%
+      ),
+      url('http://localhost:8080/appBg1.jpg');
+  background-size: cover;
+  background-position: 50% 0%;
+
+  div.app-header {
+    height: 16vh;
+    width: 100vw;
+    background-image: linear-gradient(
+          to bottom,
+          rgba(24, 47, 90, 0.5) 0%,
+          rgba(24, 47, 90, 0.8) 36%,
+          rgba(10, 30, 71, 0.9) 100%
+        ),
+        url('http://localhost:8080/xygk1.jpg');
+      background-position: 50% 0%;
+      background-size: cover;
+    }
 }
 </style>
