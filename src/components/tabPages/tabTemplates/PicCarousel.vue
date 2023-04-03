@@ -8,7 +8,7 @@
  <template>
     <DvBorderBox2 class="pic-template" :order="order">
       <div class="pic-container">
-        <el-carousel height="100%" class="pic-carousel">
+        <el-carousel height="100%" class="pic-carousel" ref="picCarousel" indicator-position="none" :autoplay="false">
             <el-carousel-item v-for="item in picInfo" :key="item.name">
                 <img :src="item.imgSrc" class="image-bg">
             </el-carousel-item>
@@ -24,29 +24,26 @@ export default {
 </script>
 
 <script setup>
-import { defineProps, onMounted } from 'vue';
+import { defineProps, ref, watch } from 'vue';
 import { BorderBox2 as DvBorderBox2 } from '@kjgl77/datav-vue3';
+import { schoolData } from './schoolData';
 
 let props = defineProps({
-  order: String
+  order: String,
+  schoolIndex: Number
 });
-console.log(props)
+console.log('pic porps', props.schoolIndex)
 
-const picInfo = [
-    {name: '吴江实验幼儿园', imgSrc: 'http://localhost:8080/南京师范大学吴江实验幼儿园（图片1）.jpg'}, 
-    {name: '扬子中学', imgSrc: 'http://localhost:8080/南京师范大学附属扬子中学俯瞰图.jpg'}, 
-    {name: '相城实验小学', imgSrc: 'http://localhost:8080/南京师范大学相城实验小学1.jpg'}, 
-    {name: '滨湖实验学校', imgSrc: 'http://localhost:8080/南京师范大学滨湖实验学校.jpeg'}, 
-    {name: '邗江实验小学', imgSrc: 'http://localhost:8080/南京师范大学附属邗江实验小学（图片1）.jpg'}, 
-    {name: '惠山实验中学', imgSrc: 'http://localhost:8080/校园风景.jpg'}, 
-    {name: '溧阳实验小学', imgSrc: 'http://localhost:8080/南京师范大学溧阳实验小学（图片1）.jpg'}, 
-    {name: '苏州实验学校', imgSrc: 'http://localhost:8080/南京师范大学苏州实验学校校门.jpg'}, 
-]
-// const order = props.order;
+let picCarousel = ref();
 
-onMounted(() => {
-  
+const picInfo = schoolData;
+
+watch(props, (newProps)=>{
+  picCarousel.value.setActiveItem(newProps.schoolIndex - 1);
 })
+// onMounted(() => {
+//   picCarousel.value.setActiveItem(props.schoolIndex - 1);
+// })
 
 </script>
 

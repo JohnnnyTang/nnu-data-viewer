@@ -27,7 +27,7 @@ import { Deck } from '@deck.gl/core/typed';
 import { ArcLayer } from '@deck.gl/layers'
 import { geoData } from './geoData'
 
-console.log(geoData)
+// console.log(geoData)
 
 let props = defineProps({
   order: String
@@ -157,7 +157,7 @@ onMounted(() => {
             getTargetPosition: d => d.geometry.coordinates,
             // source color
             getSourceColor: d => {
-                console.log(currentDataIndex)
+                // console.log(currentDataIndex)
                 return mapData2Color(d.properties[dataNameList[currentDataIndex]], 55, 0, [57, 132, 230, 200], [229, 70, 53, 200]);
             },
             // end color
@@ -166,7 +166,7 @@ onMounted(() => {
             },
             getWidth: d => {
                 let width = mapData2Width(d.properties[dataNameList[currentDataIndex]], 55, 0, 0, 8);
-                console.log('width', width)
+                // console.log('width', width)
                 return width
             },
             // if need to update
@@ -187,7 +187,7 @@ onMounted(() => {
     // dynamic
     const changeWorkData = () => {
         currentDataIndex = (currentDataIndex + 1) % (dataNameList.length);
-        console.log("change data", currentDataIndex)
+        // console.log("change data", currentDataIndex)
         renderLayer();
     }
 

@@ -20,5 +20,46 @@ const geoData = {
             { "type": "Feature", "properties": { "OBJECTID": 12, "省": "江苏省", "市": "泰州市", "省代码": 320000, "市代码": 321200, "类型": "地级市", "确定年": "2019", "ORIG_FID": 12, "2020phd": 1.33, "2020master": 1.07, "2021phd": 0.0, "2021master": 1.4, "2022phd": 0.0, "2022master": 2.28, "2020bachel": 0.0, "2021bachel": 0.0, "2022bachel": 2.63 }, "geometry": { "type": "Point", "coordinates": [ 120.056706940000026, 32.571355915000026 ] } }
         ]
     },
+    unionSchoolPt: {
+        "type": "FeatureCollection",
+        "name": "unionSchoolPt",
+        "features": [
+            { "type": "Feature", "properties": { "name":"南京师范大学青岛附属学校（小学部）", "id":1, "type":"小学" }, "geometry": { "type": "Point", "coordinates": [ 120.531722,36.155798 ] } },
+            { "type": "Feature", "properties": { "name":"东吴实验小学", "id":2, "type":"小学" }, "geometry": { "type": "Point", "coordinates": [ 120.626251,31.228737 ] } },
+            { "type": "Feature", "properties": { "name":"南京师范大学附属苏州石湖实验小学", "id":3, "type":"小学" }, "geometry": { "type": "Point", "coordinates": [ 120.641643,31.230804 ] } },
+            { "type": "Feature", "properties": { "name":"南京师范大学附属苏州石湖中学", "id":4, "type":"中学" }, "geometry": { "type": "Point", "coordinates": [ 120.642005,31.229774 ] } },
+            { "type": "Feature", "properties": { "name":"南京师范大学相城实验小学", "id":5, "type":"小学" }, "geometry": { "type": "Point", "coordinates": [ 120.633888,31.422511 ] } },
+            { "type": "Feature", "properties": { "name":"南京师范大学滨湖实验学校", "id":6, "type":"小学" }, "geometry": { "type": "Point", "coordinates": [ 120.268115,31.544623 ] } },
+            { "type": "Feature", "properties": { "name":"南京师范大学附属邗江实验小学", "id":7, "type":"小学" }, "geometry": { "type": "Point", "coordinates": [ 119.380335,32.417826 ] } },
+            { "type": "Feature", "properties": { "name":"南京师范大学吴江实验小学", "id":8, "type":"小学" }, "geometry": { "type": "Point", "coordinates": [ 120.603761,31.143563 ] } },
+            { "type": "Feature", "properties": { "name":"南京师范大学附属江阴实验小学", "id":9, "construct": 1, "type":"小学" }, "geometry": { "type": "Point", "coordinates": [ 120.526541,31.822886 ] } },
+            { "type": "Feature", "properties": { "name":"南京师范大学溧阳实验小学", "id":10, "type":"小学" }, "geometry": { "type": "Point", "coordinates": [ 119.462473,31.443859 ] } },
+            { "type": "Feature", "properties": { "name":"南京师范大学杜英路实验小学", "id":11, "construct": 1, "type":"小学" }, "geometry": { "type": "Point", "coordinates": [ 118.554479,31.936549 ] } },
+            { "type": "Feature", "properties": { "name":"南京师范大学附属黄江星河小学", "id":12, "construct": 1, "type":"小学" }, "geometry": { "type": "Point", "coordinates": [ 113.982711,22.822074 ] } },
+            { "type": "Feature", "properties": { "name":"南京师范大学相城实验幼儿园", "id":13, "construct": 0, "type":"幼儿园" }, "geometry": { "type": "Point", "coordinates": [ 120.634727,31.42275 ] } },
+            { "type": "Feature", "properties": { "name":"南京师范大学吴江实验幼儿园", "id":14, "construct": 0, "type":"幼儿园" }, "geometry": { "type": "Point", "coordinates": [ 120.604298,31.144955 ] } },
+            { "type": "Feature", "properties": { "name":"南京师范大学溧阳实验幼儿园", "id":15, "construct": 0, "type":"幼儿园" }, "geometry": { "type": "Point", "coordinates": [ 119.463596,31.442519 ] } },
+            { "type": "Feature", "properties": { "name":"南京师范大学杜英路实验幼儿园", "id":16, "construct": 1, "type":"幼儿园" }, "geometry": { "type": "Point", "coordinates": [ 118.558205,31.933529 ] } },
+            { "type": "Feature", "properties": { "name":"南京师范大学第二附属高级中学", "id":17, "construct": 0, "type":"中学" }, "geometry": { "type": "Point", "coordinates": [ 119.150188,32.287719 ] } },
+            { "type": "Feature", "properties": { "name":"南京师范大学第二附属初级中学", "id":18, "construct": 0, "type":"中学" }, "geometry": { "type": "Point", "coordinates": [ 119.141687,32.291511 ] } },
+            { "type": "Feature", "properties": { "name":"南京师范大学附属扬子中学", "id":19, "construct": 0, "type":"中学" }, "geometry": { "type": "Point", "coordinates": [ 118.74561,32.24236 ] } },
+            { "type": "Feature", "properties": { "name":"南京师范大学附属实验学校", "id":20, "construct": 0, "type":"中学" }, "geometry": { "type": "Point", "coordinates": [ 118.921336,32.105439 ] } },
+            { "type": "Feature", "properties": { "name":"南京师范大学惠山实验中学", "id":21, "construct": 0, "type":"中学" }, "geometry": { "type": "Point", "coordinates": [ 120.306344,31.64646 ] } },
+            { "type": "Feature", "properties": { "name":"南京师范大学青岛附属学校（初中部）", "id":22, "construct": 0, "type":"中学" }, "geometry": { "type": "Point", "coordinates": [ 120.533526,36.15767 ] } },
+            { "type": "Feature", "properties": { "name":"南京师范大学灌云附属高级中学", "id":23, "construct": 0, "type":"中学" }, "geometry": { "type": "Point", "coordinates": [ 119.302054,34.290013 ] } },
+            { "type": "Feature", "properties": { "name":"南京师范大学盐城实验学校", "id":24, "construct": 0, "type":"中学" }, "geometry": { "type": "Point", "coordinates": [ 120.079892,33.347822 ] } },
+            { "type": "Feature", "properties": { "name":"南京师范大学苏州实验学校", "id":25, "construct": 0, "type":"中学" }, "geometry": { "type": "Point", "coordinates": [ 120.635498,31.426664 ] } },
+            { "type": "Feature", "properties": { "name":"南京师范大学附属徐州大学路实验学校", "id":26, "construct": 0, "type":"中学" }, "geometry": { "type": "Point", "coordinates": [ 117.139537,34.193958 ] } },
+            { "type": "Feature", "properties": { "name":"南京师范大学深圳龙岗实验学校", "id":27, "construct": 0, "type":"中学" }, "geometry": { "type": "Point", "coordinates": [ 114.126427,22.635144 ] } },
+            { "type": "Feature", "properties": { "name":"南京师范大学附属东莞黄江星河中学", "id":28, "construct": 1, "type":"中学" }, "geometry": { "type": "Point", "coordinates": [ 113.983088,22.822436 ] } },
+            { "type": "Feature", "properties": { "name":"南京师范大学滨湖实验学校（蠡湖初中部）", "id":29, "construct": 0, "type":"中学" }, "geometry": { "type": "Point", "coordinates": [ 120.268115,31.544623 ] } },
+            { "type": "Feature", "properties": { "name":"南京师范大学溧阳市高新区实验初级中学", "id":30, "construct": 1, "type":"中学" }, "geometry": { "type": "Point", "coordinates": [ 119.452344,31.447823 ] } },
+            { "type": "Feature", "properties": { "name":"南京师范大学常州新龙实验学校", "id":31, "construct": 0, "type":"中学" }, "geometry": { "type": "Point", "coordinates": [ 119.957759,31.880241 ] } },
+            { "type": "Feature", "properties": { "name":"南京师范大学六合实验学校", "id":32, "construct": 1, "type":"中学" }, "geometry": { "type": "Point", "coordinates": [ 118.859045,32.328752 ] } },
+            { "type": "Feature", "properties": { "name":"南京师范大学秋韵路实验中学", "id":33, "construct": 1, "type":"中学" }, "geometry": { "type": "Point", "coordinates": [ 118.859045,32.328752 ] } },
+            { "type": "Feature", "properties": { "name":"南京师范大学滨湖实验学校九龙湾分校", "id":34, "construct": 1, "type":"中学" }, "geometry": { "type": "Point", "coordinates": [ 118.573089,31.963658 ] } },
+            
+        ]
+    },
     
 }

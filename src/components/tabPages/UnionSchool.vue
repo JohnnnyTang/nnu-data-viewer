@@ -8,13 +8,13 @@
 <template>
     <div class="student-tab">
         <KeyValTemplate order="0" title="联合办学学校情况" :nameValList="nameValListA" keyValId="2"/>
-        <MapTemplate order="3"/>
+        <MapTemplate order="3" @click-school="ChangeSchool"/>
         <ChartTemplate 
             v-for="chart in chartsInfo" :key="chart.chartId" 
             :chartId="chart.chartId" :order="chart.order" :styleType="chart.styleType"
         />
-        <PicCarousel order="4"/>
-        <DescribeTemplate order="5" />
+        <PicCarousel order="4" :schoolIndex="currentSchoolIndex"/>
+        <DescribeTemplate order="5" :schoolIndex="currentSchoolIndex"/>
     </div>
 </template>
 
@@ -25,6 +25,7 @@ export default {
 </script>
 
 <script setup>
+import { ref } from 'vue';
 import ChartTemplate from './tabTemplates/ChartTemplate.vue';
 import KeyValTemplate from './tabTemplates/KeyValTemplate.vue';
 // import ArcLayerTemplate from './tabTemplates/ArcLayerTemplate.vue';
@@ -43,6 +44,13 @@ const nameValListA = [
     {name: '幼儿园', val:'4所'}, 
     {name: '覆盖区县', val:'18个'}, 
 ]
+
+let currentSchoolIndex = ref(0);
+
+const ChangeSchool = (schoolIndex) => {
+    currentSchoolIndex.value = schoolIndex;
+    console.log('change school', schoolIndex);
+}
 
 </script>
 
