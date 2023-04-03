@@ -5,7 +5,7 @@
  * @LastEditors: 最后更新作者
  * @LastEditTime: 最后更新时间
  -->
- <template>
+<template>
     <dv-border-box12 class="map-template" :order="order">
         <div class="map-container" id="map"></div>
         <canvas id="deck" ref="deckMap"></canvas>
@@ -36,6 +36,7 @@ console.log(props)
 
 const deckMap = ref();
 
+// initial view state
 let viewState = {
   latitude: 32.834,
   longitude: 119.587,
@@ -44,6 +45,7 @@ let viewState = {
   bearing: 0
 };
 
+// maybe useful afterwards...(ps: not useful now)
 let zoom = 7;
 console.log(zoom);
 
@@ -52,6 +54,7 @@ let dataNameList = ["2020bachel", "2021bachel", "2022bachel"]
 
 const nnuPos = [118.9126,32.1002];
 
+// mapping color, pos->0-1
 const mapColor = (stColor, endColor, pos) => {
     if(pos > 0.8) {
         return [249, 56, 40, 250]
@@ -121,6 +124,7 @@ let tick = 1.0;
 
 onMounted(() => {
     console.log("Mounted...");
+    // mapbox base map
     const map = new mapboxgl.Map({
         accessToken: 'pk.eyJ1Ijoiam9obm55dCIsImEiOiJja2xxNXplNjYwNnhzMm5uYTJtdHVlbTByIn0.f1GfZbFLWjiEayI6hb_Qvg', 
         container: 'map', 
@@ -147,12 +151,16 @@ onMounted(() => {
         const workFlowLayer = new ArcLayer({
             id: 'workFlowArc', 
             data: geoData["jsCityPoint"]["features"], 
+            // source position [x, y]
             getSourcePosition: nnuPos, 
+            // target position [x, y]
             getTargetPosition: d => d.geometry.coordinates,
+            // source color
             getSourceColor: d => {
                 console.log(currentDataIndex)
                 return mapData2Color(d.properties[dataNameList[currentDataIndex]], 55, 0, [57, 132, 230, 200], [229, 70, 53, 200]);
             },
+            // end color
             getTargetColor: d => {
                 return mapData2Color2(d.properties[dataNameList[currentDataIndex]], 55, 0, [57, 132, 230, 200], [229, 70, 53, 200]);
             },
@@ -161,6 +169,7 @@ onMounted(() => {
                 console.log('width', width)
                 return width
             },
+            // if need to update
             updateTriggers: {
                 getSourceColor: [currentDataIndex], 
                 getTargetColor: [currentDataIndex],
@@ -175,6 +184,7 @@ onMounted(() => {
         )
     }
 
+    // dynamic
     const changeWorkData = () => {
         currentDataIndex = (currentDataIndex + 1) % (dataNameList.length);
         console.log("change data", currentDataIndex)
@@ -182,7 +192,7 @@ onMounted(() => {
     }
 
     const deck = new Deck({
-        canvas: 'deck', // decl requires a full-screen canvas
+        canvas: 'deck',
         width: "98%", 
         height: "98%", 
         initialViewState: viewState, 
@@ -197,6 +207,7 @@ onMounted(() => {
             renderLayer();
         }, 
         onLoad: () => {
+            // dynamic change data
             setInterval(changeWorkData, 1000);
         }
     })
