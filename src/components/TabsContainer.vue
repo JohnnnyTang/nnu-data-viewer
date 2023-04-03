@@ -7,13 +7,28 @@
  -->
 <template>
   <dv-border-box10 class="tabs-container">
-    <StudentTab />
+    <StudentTab v-if="activeTab==0"/>
+    <UnionSchool v-else-if="activeTab==1" />
   </dv-border-box10>
 </template>
 
+<script>
+export default {
+  name: 'TabControl',
+}
+</script>
+
 <script setup>
 import StudentTab from './tabPages/StudentTab.vue';
+import UnionSchool from './tabPages/UnionSchool.vue';
 import { BorderBox10 as DvBorderBox10 } from '@kjgl77/datav-vue3';
+import {defineProps} from 'vue'
+
+let props = defineProps({
+  activeTab: Number
+});
+
+console.log('activeTabIndex', props.activeTab);
 
 </script>
 

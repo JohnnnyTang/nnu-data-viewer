@@ -236,6 +236,79 @@ const workPlaceBarChange = (barChart) => {
     });
 }
 
+const unionSchoolYears = [
+    1987, 1999, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023
+]
+const fullUnionSchoolNums = [
+    2, 3, 4, 5, 7, 10, 13, 13, 14, 15, 15, 18, 22, 29, 34, 35
+]
+
+const begUnionSchoolNums = [
+    2, 3, 4
+]
+
+let dynamicUnionSchoolNums = [
+    2, 3, 4
+]
+let nextYearIndex = 3;
+
+const unionSchoolLineChange = (lineChart) => {
+    nextYearIndex = (nextYearIndex + 1) % unionSchoolYears.length;
+    if(nextYearIndex==0) {
+        dynamicUnionSchoolNums = [...begUnionSchoolNums];
+        nextYearIndex = 3;
+    }
+    else {
+        dynamicUnionSchoolNums.push(fullUnionSchoolNums[nextYearIndex])
+    }
+    lineChart.setOption({
+        series: [
+            {
+                data: dynamicUnionSchoolNums,
+            }
+        ],
+    });
+}
+
+const unionSchoolTypeNum = [
+    [6, 9, 9, 9, 10, 11, 11, 12, 14, 16, 18, 19], 
+    [1, 1, 4, 4, 4, 4, 4, 5, 7, 10, 12, 12],
+    [0, 0, 0, 0, 0, 0, 0, 1, 1, 3, 4, 4], 
+]
+
+let currentSchoolTypeIndex = 0;
+const schoolTypeYears = [
+    2012, 2013, 2014, 2015, 2016, 2017, 2018, 
+    2019, 2020, 2021, 2022, 2023
+]
+const schoolTypePieChange = (pieChart) => {
+    currentSchoolTypeIndex = (currentSchoolTypeIndex + 1) % schoolTypeYears.length;
+    pieChart.setOption({
+        title: {
+            text: '联合办学学校类型构成-' + schoolTypeYears[currentSchoolTypeIndex],
+        },
+        series: [
+            {
+                data: [
+                    { 
+                        value: unionSchoolTypeNum[0][currentSchoolTypeIndex], 
+                        name: '中学' 
+                    },
+                    { 
+                        value: unionSchoolTypeNum[1][currentSchoolTypeIndex],
+                        name: '小学' 
+                    },
+                    { 
+                        value: unionSchoolTypeNum[2][currentSchoolTypeIndex], 
+                        name: '幼儿园' 
+                    },
+                ]
+            }
+        ],
+    });
+}
+
+
 const frontDataNew = {
     'maps': [], 
     'charts': [
@@ -705,6 +778,188 @@ const frontDataNew = {
             },
             'dynamicFunc': workPlaceBarChange
         },
+        {
+            'chartOpt': {
+                title: {
+                    text: '联合办学学校数量变化情况',
+                    textAligh: 'center',
+                    x:'center', 
+                    top: '2%', 
+                    textStyle: {
+                        color: 'rgba(255, 255, 255, 1)',
+                        fontWeight: 'bolder',
+                        fontFamily: 'Microsoft YaHei',
+                        fontSize: 24,
+                    }
+                },
+                grid: {
+                    top: '12%',
+                    left: '4%',
+                    right: '6%',
+                    bottom: '4%',
+                    containLabel: true
+                },
+                xAxis: {
+                    type: 'category',
+                    data: unionSchoolYears,
+                    axisLabel: {
+                        color: 'rgba(255, 255, 255, 0.9)',
+                        formatter: '{value} 年', 
+                        fontSize: 14,
+                        fontWeight: 'bold'
+                    }
+                },
+                yAxis: {
+                    type: 'value',
+                    axisLabel: {
+                        color: 'rgba(255, 255, 255, 0.9)',
+                        formatter: '{value} 所',
+                        fontSize: 14,
+                        fontWeight: 'bold'
+                    }
+                },
+                series: [
+                    {
+                        name: 'school number',
+                        type: 'line',
+                        smooth: true,
+                        data: dynamicUnionSchoolNums,
+                        // symbolSize: 14,
+                        // symbol: 'diamond',
+                        // itemStyle: {
+                        //     color: '#1510EA'
+                        // }, 
+                        showSymbol: false, 
+                        lineStyle: {
+                            color: '#5B9DD4',
+                            width: 5
+                        },
+                        areaStyle: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                                { offset: 0, color: '#3DF2F2' },
+                                { offset: 0.5, color: '#2995D9' },
+                                { offset: 1, color: '#074E8C' }
+                            ])
+                        },
+                        animationDuration: 500, 
+                        markLine: {
+                            data: [
+                              { type: 'max', name: '数量' },
+                              [
+                                {
+                                    symbol: 'none',
+                                    x: '20%',
+                                    yAxis: 'max',
+                                },
+                                {
+                                  symbol: 'circle',
+                                  label: {
+                                    position: 'start',
+                                    formatter: 'Max',
+                                    fontSize: 14,
+                                    color:'rgba(255, 255, 255, 0.9)'
+                                  },
+                                  type: 'max',
+                                  name: '最高点'
+                                }
+                              ]
+                            ]
+                        }
+                    }
+                ]
+            }, 
+            'dynamicFunc': unionSchoolLineChange
+        }, 
+        {
+            'chartOpt': {
+                title: {
+                    text: '联合办学学校类型构成-2012',
+                    x: 'center',
+                    top: '2%',
+                    textStyle: {
+                        color: 'rgba(255, 255, 255, 0.9)',
+                        fontWeight: 'bolder',
+                        fontFamily: 'Microsoft YaHei',
+                        fontSize: 26,
+                    }
+                },
+                legend: {
+                    orient: 'horizontal',
+                    bottom: '4%',
+                    x:'center', 
+                    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                    borderRadius: 10,
+                    show: true,
+                    padding: 10,
+                    textStyle: {
+                        color: 'white',
+                        fontWeight: 'bold',
+                        fontSize: 18
+                    }
+                },
+                visualMap: {
+                    show: false,
+                    min: 1.5,
+                    max: 72,
+                    inRange: {
+                        // colorLightness: [0, 1]
+                    }
+                },
+                series: [
+                    {
+                        name: '联合办学学校类型构成',
+                        type: 'pie',
+                        roseType: 'radius',
+                        radius: ['20%','70%'],
+                        center: ['50%', '48%'],
+                        avoidLabelOverlap: false,
+                        showEmptyCircle: false,
+                        itemStyle: {
+                            borderRadius: 8,
+                            shadowBlur: 200,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        },
+                        label: {
+                            show: true,
+                            position: 'inside', 
+                            formatter: '{c} 所', 
+                            fontSize: 16, 
+                            fontWeight: 'bold',
+                            color: 'white',
+                        },
+                        emphasis: {
+                            label: {
+                                show: true,
+                                fontSize: '24',
+                                fontWeight: 'bold',
+                                borderColor: 'black',
+                                color: 'white',
+                            }
+                        },
+                        data: [
+                            { 
+                                value: unionSchoolTypeNum[0][0], 
+                                // value: (unionSchoolTypeNum[0][0]/(unionSchoolTypeNum[0][0] + unionSchoolTypeNum[1][0] + unionSchoolTypeNum[2][0])*100).toFixed(2), 
+                                name: '中学' 
+                            },
+                            { 
+                                value: unionSchoolTypeNum[1][0],
+                                // value: (unionSchoolTypeNum[1][0]/(unionSchoolTypeNum[0][0] + unionSchoolTypeNum[1][0] + unionSchoolTypeNum[2][0])*100).toFixed(2),
+                                name: '小学' 
+                            },
+                            { 
+                                // value: (unionSchoolTypeNum[2][0]/(unionSchoolTypeNum[0][0] + unionSchoolTypeNum[1][0] + unionSchoolTypeNum[2][0])*100).toFixed(2), 
+                                value: unionSchoolTypeNum[2][0], 
+                                name: '幼儿园' 
+                            },
+                        ].sort(function (a, b) {
+                            return b.value - a.value;
+                        }),
+                    }
+                ]
+            },
+            'dynamicFunc': schoolTypePieChange
+        }
     ]
 }
 

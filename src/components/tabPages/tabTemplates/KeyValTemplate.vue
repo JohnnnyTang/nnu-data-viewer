@@ -87,6 +87,50 @@ div.keyVal-template {
         }
     }
   }
+
+  &[keyValId='2'] {
+    margin-top: 1vh;
+    margin-left: 1vw;
+    width: 20vw;
+    height: 12vh;
+
+    div.border-box-content{
+        width: 98%;
+        // margin-left: 2%;
+        column-gap: 9%;
+    }
+
+    div.data-title {
+        // margin-top: 0.4vh;
+        width: 28vw;
+        line-height: 3vh;
+        height: 3vh;
+        font-size: 1vw;
+        font-weight: 600;
+        color: rgba(230, 242, 252, 0.9);
+    }
+
+    div.key-val {
+        width: fit-content;
+        height: fit-content;
+        row-gap: 1vh;
+        justify-content: flex-start;
+        
+        div.key-name {
+            font-size: 1.8vh;
+            font-weight: 600;
+            font-family: "Microsoft YaHei";
+            text-align: right;
+            color: rgb(246, 251, 255);
+        }
+        div.val-content {
+            font-size: 2.6vh;
+            text-align: right;
+            font-family: "Impact";
+            color: rgb(181, 255, 97);
+        }
+    }
+  }
   
   @each $order in $orders {
     &[order='#{$order}'] {

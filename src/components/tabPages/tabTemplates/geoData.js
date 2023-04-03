@@ -19,5 +19,6 @@ const geoData = {
             { "type": "Feature", "properties": { "OBJECTID": 7, "省": "江苏省", "市": "连云港市", "省代码": 320000, "市代码": 320700, "类型": "地级市", "确定年": "2019", "ORIG_FID": 7, "2020phd": 0.0, "2020master": 1.42, "2021phd": 0.0, "2021master": 0.57, "2022phd": 1.23, "2022master": 1.27, "2020bachel": 0.0, "2021bachel": 0.0, "2022bachel": 0.35 }, "geometry": { "type": "Point", "coordinates": [ 119.133600164000086, 34.533204134000073 ] } },
             { "type": "Feature", "properties": { "OBJECTID": 12, "省": "江苏省", "市": "泰州市", "省代码": 320000, "市代码": 321200, "类型": "地级市", "确定年": "2019", "ORIG_FID": 12, "2020phd": 1.33, "2020master": 1.07, "2021phd": 0.0, "2021master": 1.4, "2022phd": 0.0, "2022master": 2.28, "2020bachel": 0.0, "2021bachel": 0.0, "2022bachel": 2.63 }, "geometry": { "type": "Point", "coordinates": [ 120.056706940000026, 32.571355915000026 ] } }
         ]
-    }
+    },
+    
 }

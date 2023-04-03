@@ -14,7 +14,8 @@
     </div>
     <div class="tabs-button">
       <SingleTab v-for="tab in tabsInfo" :key=tab.name
-        :tabName=tab.name :ifActive="tab.ifActive" 
+        :tabName=tab.name :ifActive="tab.ifActive"
+        @click="onTabClick(tab.tabKey)"
       />
     </div>
     <div class="clock">
@@ -41,13 +42,13 @@ export default {
 </script>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, defineEmits } from 'vue'
 
 let tabsInfo = ref([
-  {name: '本科生毕业情况', ifActive:true}, 
-  {name: '研究生毕业情况', ifActive:false}, 
-  {name: '联合办学情况', ifActive:false}, 
-  {name: '师范教育协同提质计划', ifActive:false}, 
+  {name: '本科生毕业情况', ifActive:true, tabKey:0}, 
+  // {name: '研究生毕业情况', ifActive:false}, 
+  {name: '联合办学情况', ifActive:false, tabKey:1}, 
+  {name: '师范教育协同提质计划', ifActive:false, tabKey:1}, 
 ])
 
 let activeTabIndex = 0;
@@ -57,24 +58,36 @@ const updataTime = () => {
     curTime.value = new Date();
 }
 
-
 let ifPause = ref(false);
 
-let autoPlay = null;
+// let autoPlay = null;
 
 const PlayOnClick= () => {
   ifPause.value = !ifPause.value;
-  if(ifPause.value) {
-    autoPlay = setInterval(() => {
-      tabsInfo.value[activeTabIndex]["ifActive"] = false;
-      activeTabIndex = (activeTabIndex+1)%(tabsInfo.value.length)
-      tabsInfo.value[activeTabIndex]["ifActive"] = true;
-    }, 1000);
-  }
-  else {
-    clearInterval(autoPlay)
-  }
+  // if(ifPause.value) {
+  //   autoPlay = setInterval(() => {
+  //     tabsInfo.value[activeTabIndex]["ifActive"] = false;
+  //     activeTabIndex = (activeTabIndex+1)%(tabsInfo.value.length)
+  //     tabsInfo.value[activeTabIndex]["ifActive"] = true;
+  //   }, 1000);
+  // }
+  // else {
+  //   clearInterval(autoPlay)
+  // }
 }
+
+const emit = defineEmits(['clickTab', 'autoPlay']);
+
+function onTabClick(clickIndex) {
+  if(clickIndex==activeTabIndex) {
+    return;
+  }
+  tabsInfo.value[activeTabIndex]["ifActive"] = false;
+  activeTabIndex = clickIndex;
+  tabsInfo.value[activeTabIndex]["ifActive"] = true;
+  emit("clickTab", activeTabIndex)
+}
+
 
 onMounted(() => {
     setInterval(updataTime, 1000);
@@ -144,15 +157,6 @@ div.tab-control {
     justify-content: space-around;
   }
 
-  // div.title-logo {
-  //   position: absolute;
-  //   right: 1.5vw;
-  //   top: 0.5vh;
-  //   height: 5vh;
-  //   width: 5vh;
-  //   background-image: url('http://localhost:8080/nnu-logo.png');
-  //   background-size: cover;
-  // }
   div.clock {
       text-align: center;
       margin-top: 0;
@@ -269,7 +273,7 @@ div.tab-control {
         .progress {
           transform: translateY(0px);
           &:before {
-            transition: transform 50s linear;
+            transition: transform 10s linear;
             transform: scaleX(1);
           }
         }

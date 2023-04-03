@@ -7,25 +7,30 @@
  -->
 <template>
   <div class="app-header">
-    <TabControl />
+    <TabControl @click-tab="changeTab"/>
     <StatHeader />
   </div>
-  <TabsContainer />
+  <TabsContainer :activeTab="activeTabIndex"/>
 </template>
 
 <script>
+export default {
+  name: 'App',
+}
+</script>
+
+<script setup>
+import { ref } from 'vue'
 import StatHeader from './components/StatHeader.vue'
 import TabControl from './components/TabControl.vue'
 import TabsContainer from './components/TabsContainer.vue'
 
-export default {
-  name: 'App',
-  components: {
-    StatHeader, 
-    TabControl, 
-    TabsContainer
-  }
+let activeTabIndex = ref(0);
+
+function changeTab(tabIndex) {
+  activeTabIndex.value = tabIndex;
 }
+
 </script>
 
 <style lang="scss">

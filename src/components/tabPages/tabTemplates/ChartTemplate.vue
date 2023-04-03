@@ -35,11 +35,11 @@ let props = defineProps({
     styleType: String, 
 })
 
-console.log(props);
+// console.log(props);
 
 const chartDom = ref(null);
 const styleType = ref(props.styleType);
-console.log(frontDataNew)
+// console.log(frontDataNew)
 
 onMounted(()=> {
     console.log('dom', chartDom.value);
@@ -97,6 +97,20 @@ div.border-box {
         height: 42vh;
         margin-bottom: 1vh;
     }
+
+    &[styleId='5'] {
+        width: 20vw;
+        height: 36vh;
+        // margin-bottom: 1vh;
+        margin-left: 1vw;
+    }
+
+    &[styleId='6'] {
+        width: 20vw;
+        height: 32vh;
+        margin-bottom: 1vh;
+        margin-left: 1vw;
+    }
 }
 div.chart-container {
     border-radius: 0.4em;
@@ -128,6 +142,19 @@ div.chart-container {
         width: 22vw;
         height: 42vh;
         margin-bottom: 1vh;
+    }
+
+    &[styleId='5'] {
+        width: 20vw;
+        height: 36vh;
+        // margin-bottom: 1vh;
+    }
+
+    &[styleId='6'] {
+        width: 20vw;
+        height: 32vh;
+        margin-bottom: 1vh;
+        // margin-left: 1vw;
     }
 
     div {
